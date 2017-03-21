@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{%block content%}
+
+	{%for room in rooms%}
+	<div class="col-sm-12">
+		<div class="col-sm-3">{{room.name}}</div>
+		<div class="col-sm-3">{%if room.game_type=="SP"%}<p> Simpleplay </p>{% else %} <p>Multiplay</p> {% endif %}</div>
+		<div class="col-sm-3">{{room.date_begin}}</div>
+	 </div>
+
+{%endfor%}
+{%endblock content%}
+
