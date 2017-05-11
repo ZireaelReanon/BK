@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Delius+Unicase');
+.delius {
+	font-family: 'Delius Unicase', cursive;
+	color: #ffff00;
+	font-size: 20px
+}
+.charactr_div{
+	text-align: center;
+	border-radius: 5px;
+	border: 3px solid #0066ff;
+	height: 400px 
+}
+.enemy_div{
+	background-color: rgba(255, 51, 0, 0.5);
+	background-image:url(../img/enemy.png);
+	background-position: center, center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+.player_div{
+	background-color: rgba(0, 255, 0, 0.5);
+	background-image:url(../img/trees.png);
+	background-position: center, center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}

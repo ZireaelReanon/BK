@@ -1,0 +1,17 @@
+p {
+			font-family: Verdana;
+			font-weight: 30px;
+}
+.go_to_room{
+			background-color:rgba(51, 204, 51, 0.3);
+			border-radius: 4px;
+			color: #ffff66;
+			border:1px solid #66ff33;
+
+		}
+.search{
+		z-index: 99;
+		width: 145px;
+
+
+}

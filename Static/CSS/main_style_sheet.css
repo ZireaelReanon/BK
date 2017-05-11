@@ -1,0 +1,23 @@
+p{
+		font-family: segoe script;
+		font-weight: 30px;
+		margin: 0;
+		padding: 0;
+	}
+	.block_blue 
+	div{
+		border: 2px solid #98FB98;
+		
+		padding: 0;
+		margin:0;
+	}
+	.block_blue{
+		background-color: #00FF7F;
+		border-radius: 1px;
+
+		color: #3CB371;
+	}
+	#search{
+		width: 145px;
+		background-color:#ff0066;
+	}

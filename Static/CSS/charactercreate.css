@@ -1,0 +1,28 @@
+ @import  url('https://fonts.googleapis.com/css?family=BenchNine');
+.BenchNine{
+	font-family: 'BenchNine', cursive;		
+	color:#BA55D3;
+	font-size: 20px
+}
+.character_div{
+	text-align: center;
+	border-radius: 5px;
+	border: 3px solid #9932CC;
+	height: 400px;
+	
+}
+.enemy_div{
+	background-color:rgba(0, 250, 154,0.5);
+	background-image:url(../Image/enemy.png);
+	background-position: center;center;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+}
+.player_div{
+	background-color:rgba(205, 92, 92,0.5);
+	background-image:url(../Image/sed.png);
+	background-position: center;center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}

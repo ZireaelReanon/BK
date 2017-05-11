@@ -1,0 +1,31 @@
+{% extends 'base.html'%}
+{% load staticfiles %}
+{% block title%} {{ title }}{% endblock title %}
+{% block CSS %}
+		<link rel="stylesheet" href="{% static 'css/charcreate.css' %}">
+{% endblock CSS %}
+{% block content %}
+<form action="/main/" method="POST" >
+{% csrf_token %}
+	Name Room: <input type="text" name = "nameRoom"><br>
+	<div class="col-xs-12 col-sm-6 player_div charactr_div" >
+	Name:<input type="text" name="nameChar" placeholder="Input Name"><br>
+	Race:<select name="raceChar">
+  			{% for race1,race2 in races %}
+  			<option value="{{race1}}">{{race2}}</option>
+  			{% endfor %}
+		</select></div>
+	<div class="col-xs-12 col-sm-6 enemy_div charactr_div" >
+	Name:<input type="text" name="nameEnem"><br>
+	Race:<select name="raceEnem">
+  			{% for race1,race2 in races %}
+  			<option value="{{race1}}">{{race2}}</option>
+  			{% endfor %}
+			</select></div>
+	</div>
+	<button type="submit" class="btn btn-success">OK</button>
+</form>
+{# Переход на страницу с комнатами. #}
+<a href="/main"><button type="submit" class="btn btn-danger">Cancel</button></a>
+		
+{% endblock content %}

@@ -1,0 +1,39 @@
+#crystals1 {
+    z-index: -99;
+    position:absolute;
+    width:480px;
+    height:100%;
+    background:transparent;
+}
+#crystals2 {
+    z-index: -99;
+    position:absolute;
+    top:0;
+    left:55%;
+    width:480px;
+    height:100%;
+    background:transparent;
+}
+.crystal_01 {
+    z-index: -99;
+    position: absolute;
+    width:100%;
+    height:100%;
+    background:url(http://img.finalfantasyxiv.com/lds/promo/pc/global/images/world/what/crystal_01.png)repeat-y;
+}
+.crystal_02 {
+    z-index: -99;
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:url(http://img.finalfantasyxiv.com/lds/promo/pc/global/images/world/what/crystal_02.png)repeat-y;
+}
+.crystal_03 {
+    z-index: -99;
+    position:absolute;
+    width:100%;
+    height:100%;
+    left:50%;
+    margin-left:-180px;
+        background:url(http://img.finalfantasyxiv.com/lds/promo/pc/global/images/world/what/crystal_03.png)repeat-y;
+}

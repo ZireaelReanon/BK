@@ -1,14 +1,29 @@
 {% extends "base.html" %}
+{%load staticfiles%}
+{%block title%}{{title}}{%endblock title%}
+
+{% block CSS %}
+<link rel="stylesheet" href="{%static 'css/main_style_sheet.css'%}">
+
+{% endblock CSS %}
 
 {%block content%}
-
+	<input type="text">
+	<button type="button" class="btn">Search</button>
+	<br>
+	<a href="/create_players/"><button type="button" class="btn btn-success">Create Room</button></a>
+	<br>
 	{%for room in rooms%}
-	<div class="col-sm-12">
-		<div class="col-sm-3">{{room.name}}</div>
-		<div class="col-sm-3">{%if room.game_type=="SP"%}<p> Simpleplay </p>{% else %} <p>Multiplay</p> {% endif %}</div>
-		<div class="col-sm-3">{{room.date_begin}}</div>
+	<div class="col-sm-3 block_blue">
+		<div class="col-sm-12">{{room.name}}</div>
+		<div class="col-sm-12">{% if room.game_type == "SP" %}<p> Simpleplay </p>{% else %} <p>Multiplay</p> {% endif %}</div>
+		<div class="col-sm-12">{{room.date_begin}}</div>
+		{%for character in characters%}
+			{%if character.room == room %}
+				<p>{{character}}<p/>race:{{character.race}}
+		{%endif%}
+	{%endfor%}
 	 </div>
 
 {%endfor%}
 {%endblock content%}
-
