@@ -2,9 +2,14 @@
 {% load staticfiles %}
 {% block title %}{{title}}{% endblock title %}
 {% block CSS %}
-	<link rel="stylesheet" href="{% static 'css/mainStyleSheet.css' %}">
+	<link rel="stylesheet" href="{% static 'css/Front.css' %}">
+
 {% endblock CSS %}
 {% block content %}
+<div id="large-header" class="large-header">
+  <canvas id="demo-canvas"></canvas>
+    <h1 class="main"> <span class="thin"></span></h1>
+</div>
 	<div class="row">
 		<div class="col-xs-4 col-xs-offset-8" align="right">
 			<input type="text">

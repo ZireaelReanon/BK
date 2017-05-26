@@ -5,7 +5,7 @@ from django.http import JsonResponse, HttpResponse,HttpResponseRedirect
 from .models import Room,Character
 import random
 from datetime import datetime # models.py / characters.create.html )data end block
-
+from django.urls import reverse
 # Create your views here.
 # Функция для перехода на шаблон комнаты
 def go_to_room(request, id=None):
@@ -71,11 +71,17 @@ def attack(request):
 
 	if request.is_ajax():
 		# Получить id от запроса
-		r_id=request.GET.get(id)# получаем от запроса пользователя данные и отправляем их на сервер  и преобразоват в переменную
+		p_id=request.GET.get('id')
+		print(p_id)# получаем от запроса пользователя данные и отправляем их на сервер  и преобразоват в переменную
 		room=Room.objects.get(id=r_id)# jобр строку найдет обект комната в базе рум и возворащается обект рум 
 		#в комнате ест поля игрок комната начало конец 
 		player_id = request.GET.get("playerId")
+		print(player_id)
 		enemy_id = request.GET.get("enemyId")
+		print(enemy_id)
+
+		r_id = request.GET.get("roomId")
+		print(id)
 		# совершить поиск в базе по id, чтобы найти персонажа
 		player = Character.objects.get(id=player_id)
 		enemy = Character.objects.get(id=enemy_id)
@@ -95,16 +101,17 @@ def attack(request):
 		player.save()
 		room.save()
 	#поле для models.py
-	if enemy.health<=0 or player.health<=0:
-		room.data_end=datetime.now()
-		room.save()
-	return redirect(reverse("arena:finish_base", kwargs={"id": int(r_id)}))
-	context = {
-		"healthEnemy": enemy.health,
-		"healthPlayer": player.health
-		}
-	jsresp = JsonResponse(context)
-	return HttpResponse(jsresp.content, content_type='text/html')
+		if enemy.health <=0 or player.health <=0 :
+			room.data_end=datetime.now()
+			room.save()
+		return redirect(reverse("arena:finish_base", kwargs={"id": int(r_id)}))
+		context = {
+			"healthEnemy": enemy.health,
+			"healthPlayer": player.health,
+			}
+			jsresp = JsonResponse(context)
+			return HttpResponse(jsresp.content, content_type='text/html')
+
 def fight_result(request, id):
 	room = Room.objects.get(id=id)
 	players = Character.objects.filter(room=room)

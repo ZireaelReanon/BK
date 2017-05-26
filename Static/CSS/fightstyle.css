@@ -1,10 +1,11 @@
 .health_bar{
 	height: 20px;
 	padding: 0px !important;
-	background-color: #ff3300;
-	border:1px solid #66ff66;
+	background-color: #ff0000;
+	border:1px solid  #404040;
+
 }
-.health_div {
-	background-color: #66ff66;
-	height: 100%;  
-}
+.health_div{
+		background-color: #00ff00;
+		height:100%;
+	}
