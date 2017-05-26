@@ -21,7 +21,7 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     # Добавил namespace
-    url(r'^', include("room.urls", namespace="arena") )
+    url(r'^', include("room.urls", namespace="arena") ),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

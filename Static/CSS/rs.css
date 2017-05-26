@@ -1,0 +1,44 @@
+/*p {
+    border-bottom: 3px solid green; 
+    background-color: #e6ccb3;
+    padding: 0px;
+}
+
+body {
+	background-color:rgb(161, 247, 183);
+	font-family: 'Inknut Antiqua', serif;
+}
+
+li {
+	color: #694016;
+	padding: 3px;
+}
+
+.container {
+
+	margin:auto;
+  	display: flex;
+  	align-content: flex-start;
+  	width: 50%;
+  	background-image: url(http://fonerus.ru/_ph/62/2/170951385.jpg?1492416971);
+}
+
+ul {
+  margin: 0;
+}
+img {
+width: 200px;
+height: auto;
+}*/
+p {
+    font-family: 'Inknut Antiqua', serif;font-family: Verdana;
+    font-weight: 30px;
+  }
+body {
+      padding-left: 15px;
+      background-color:rgba(51, 204, 51, 0.3);
+      border-radius: 4px;
+      color: #ffff66;
+      border:1px solid #66ff33;
+
+    }

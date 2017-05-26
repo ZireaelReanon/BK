@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}{{title}}{% endblock title %}
+{% block CSS %}
+	<link rel="stylesheet" href="../static/css/resultstyle.css">
+	<link href="https://fonts.googleapis.com/css?family=Inknut+Antiqua" rel="stylesheet">
+{% endblock CSS %}
+{% block content %}
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-4" align="center"></div>
+			 	<div class="container">
+			 		<div class="minicontainer">
+			 			<div class="row">
+							<div class="col-xs-4">
+								<p>You win!<br>
+								My Hero!</p> 
+							</div>
+						</div>
+					</div>
+			 		<div class="image">
+        				<img src="../static/Image/Elf.png" alt=""/>
+        			</div>
+        			<div class="list">
+			 			<ul>
+			 				<li>
+			 					List of Attacks
+			 				</li>
+			 				<li>
+			 					List of Defence
+			 				</li>
+			 			</ul>
+					</div>
+				</div>
+		</div>
+	</div>
+{% endblock content %}

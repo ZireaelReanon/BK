@@ -8,14 +8,19 @@ $(document).ready(function(){
 		$(".click_me_enemy").click(function(){
 		$(".clicked_enemy").toggleClass("clicked_enemy");
 		$ (this).toggleClass("clicked_enemy");
+
 	});
 		$("#fight").click(function(){
+      
 			$.ajax({
            type: "GET",
            url: "/attack/",
            data:{
                'partEnemy':$(".clicked_enemy").data('part'),
                'partPlayer':$(".clicked_player").data('part'),
+               'partEnemy':$(".enemy_name").data('part'),
+               'partPlayer':$(".player_name").data('part')
+               "id ":$("#room").data("id")
            },
            cache:false,
            success:

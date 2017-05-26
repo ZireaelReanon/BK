@@ -4,6 +4,8 @@
 
 {%block CSS%}
 <link rel="stylesheet" href="{%static 'css/fightstyle.css'%}">
+<link rel="stylesheet" href="{%static 'css/Buttons.css'%}">
+
 <style>
 .player_container{
 	background-image:url({%static "/Image/Elf.png"%});
@@ -25,9 +27,10 @@ height:100px;
 }
 .enemy_container>div{
 	height:100px;
+
 	}
 .background_romm{
-	background-image:url({%static "/Image/arena122.jpg "%});
+	background-image:url({%static "/Image/septa.png "%});
 	background-position:center center;
 	background-repeat: no-repeat;
 	background-size: 200px;
@@ -40,39 +43,65 @@ height:100px;
 	.clicked_player{
 		background-color: rgba(102, 153, 255, 0.3);
 	}
+	.res{
+	position: absolute;
+	}
+	
 	</style>
+	
+
+</div> 
+
+
 
 {%endblock CSS%}
 
 {% block content %}
+
 <div class="container-fluid">
 	<div class="row ">
 	<div class="col-xs-6" style="padding:0px">
-	<div class="col-xs-2">Name</div>
-	<div class="col-xs-10 health_bar "><div id ="player" class ="health_div player" style="float:left; width:40%"></div></div>
-	</div>
-<div class="col-xs-2">Name</div>
-<div class="col-xs-6" style="padding:0px">
-<div class="col-xs-10 health_bar "><div id ="enemy" class ="health_div enemy" style="float:right; width:50%"></div></div>
-</div>
-<div class="row background_room">
-	<div class="col-xs-6 player_container">
-	<div class="col-xs-12 click_me_player " data-part="0"></div>
-	<div class="col-xs-4 click_me_player" data-part="1"></div>
-	<div class="col-xs-4 click_me_player" data-part="2"></div>
-	<div class="col-xs-4 click_me_player" data-part="3"></div>
-	<div class="col-xs-12 click_me_player" data-part="4"></div>
-</div>
-	<div class="col-xs-6 enemy_container">
-	<div class="col-xs-12 click_me_enemy" data-part="0"></div>
-	<div class="col-xs-4 click_me_enemy" data-part="1"></div>
-	<div class="col-xs-4 click_me_enemy" data-part="2"></div>
-	<div class="col-xs-4 click_me_enemy" data-part="3"></div>
-	<div class="col-xs-12 click_me_enemy" data-part="4"></div>
+	{# Вставил имена и айдишники для Игрока и Врага, для отправки запроса #}
+		<div class="col-xs-2 player_name" data-id = "{{players.0.id}}">{{players.0.name}}</div>
+			<div class="col-xs-10 health_bar "><div id ="player" class="health_div " style="float: left; width: {{players.0.health}}%"></div></div>
+		</div>
+		<div class="col-xs-6" style="padding: 0px">
+			<div  class="col-xs-10 health_bar "><div id="enemy" class="health_div" style="float: right; width: {{players.1.health}}% "></div></div>
+			<div class="col-xs-2 enemy_name" data-id = "{{players.1.id}}">{{players.1.name}}</div>
 		</div>
 	</div>
-	<button id="Fight" class="btn btn-warning">Attack!</button>
+	<div class="row">
+		<div id = "room" data-id = "{{instance.id}}"></div>
+<div class="row background_room">
+	<div class="col-xs-6 player_container">
+			<div class="col-xs-12 click_me_player" data-part="0"></div>
+			<div class="col-xs-4 click_me_player" data-part="2"></div>
+			<div class="col-xs-4 click_me_player" data-part="1"></div>
+			<div class="col-xs-4 click_me_player" data-part="3"></div>
+			<div class="col-xs-12 click_me_player" data-part="4"></div>
+		</div>
+		<div class="col-xs-6 enemy_container">
+			<div class="col-xs-12 click_me_enemy" data-part="0"></div>
+			<div class="col-xs-4 click_me_enemy" data-part="2"></div>
+			<div class="col-xs-4 click_me_enemy" data-part="1"></div>
+			<div class="col-xs-4 click_me_enemy" data-part="3"></div>
+			<div class="col-xs-12 click_me_enemy" data-part="4"></div>
+		</div>
+	</div>
+	
+<div style="{% if status %} 
+	display:none 
+{% else %}
+	display:block
+{% endif %} " id = "Result">
 </div>
+	
+</div>
+<ul>
+  <li><a href="#" class="round yellow">Ready?!<span class="round">Get to fight all of them!</span></a></li>
+  <li><a href="Attack" class="round red">Attack!<span class="round">Only one of you wins! </span></a></li>
+	<li><a href="/main" class="round green">Return<span class="round">Find your room! </span></a></li>
+</ul> 
 {%endblock content%}
 {%block scripts%}
 <script src="{%static 'js/fight.js'%}"></script>

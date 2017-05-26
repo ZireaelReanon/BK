@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class Room(models.Model):
@@ -8,8 +9,11 @@ class Room(models.Model):
 	date_begin=models.DateField(auto_now =True)
 	date_end=models.DateField(blank=True, null=True)
 
-def __str__(self):
-	return self.name
+	def __str__(self):
+		return self.name
+
+	def get_absolute_url(self):
+		return reverse("arena:fight_room") #kwargs={"id": self.id}		
 
 class Character(models.Model):
 	RACE=(("DE","Dark Elf"),("OR","Orc"),("MG","Magician"),("HU","Human"),("DW","Dwarf"),("W","Werewolf"),("DR","Driada"))
@@ -36,7 +40,17 @@ def attack(self,enemy):
 	print(enemy.block_part)
 	if self.target != enemy.block_part:
 			enemy.hit(self.target)
+
 def choice_target(self, target):
 	self.target = target
 def body_block(self,block_part):
 	self.block_part = block_part
+# функция для перехода на страницу шаблон по имени шаблона в url. 
+	# arena это namespace в FightClub/urls.py для include()
+	# in_room это name в room/urls.py для url по game
+	# kwargs={"id": self.id} это передача значения как часть адреса.
+def get_absolute_url(self):
+		return reverse("arena:in_room", kwargs={"id": self.id})	
+def get_result(self):
+		return reverse ("arena:result", kwargs={"id": self.id})
+	

@@ -1,29 +1,37 @@
 {% extends "base.html" %}
-{%load staticfiles%}
-{%block title%}{{title}}{%endblock title%}
-
+{% load staticfiles %}
+{% block title %}{{title}}{% endblock title %}
 {% block CSS %}
-<link rel="stylesheet" href="{%static 'css/main_style_sheet.css'%}">
-
+	<link rel="stylesheet" href="{% static 'css/mainStyleSheet.css' %}">
 {% endblock CSS %}
+{% block content %}
+	<div class="row">
+		<div class="col-xs-4 col-xs-offset-8" align="right">
+			<input type="text">
+			<button type="submit" class="btn">Search</button>
+			<br>
+			<a href="/create_players/" style="float:right"><button type="submit" class="btn btn-success" >Create your own </button></a>
+			<br>
+		</div>
+	</div>
+	
+	{%for room in rooms %}
+	{# Переход на выбраную комнату по нажатию. #}
+		<a href="{% if room.data_end %} {{room.get_result}} {% else %}{{room.get_absolute_url}} {%endif%}" title="">
+		 
+		<div class="col-sm-3 go_to_room" data-id="{{room.id}}">
+			<div class="col-sm-12">Name room: {{room}}</div>
+			<div class="col-sm-12" >When start: {{room.data_begin}}</div>
+			{% for FC in FCs %}
+				{% if character.room == room %}
+					<div class="col-xs-12">
 
-{%block content%}
-	<input type="text">
-	<button type="button" class="btn">Search</button>
-	<br>
-	<a href="/create_players/"><button type="button" class="btn btn-success">Create Room</button></a>
-	<br>
-	{%for room in rooms%}
-	<div class="col-sm-3 block_blue">
-		<div class="col-sm-12">{{room.name}}</div>
-		<div class="col-sm-12">{% if room.game_type == "SP" %}<p> Simpleplay </p>{% else %} <p>Multiplay</p> {% endif %}</div>
-		<div class="col-sm-12">{{room.date_begin}}</div>
-		{%for character in characters%}
-			{%if character.room == room %}
-				<p>{{character}}<p/>race:{{character.race}}
-		{%endif%}
-	{%endfor%}
-	 </div>
+						Player name: {{character}} <br> Player race:{#  отображения расы #}{%for race in races%}{%if race.0 == character.race %}{{race.1}}{%endif%}{%endfor%}<br>
+					</div>
+				{% endif %}
+			{%endfor%}
+		</div>
+		</a>
 
-{%endfor%}
-{%endblock content%}
+	{% endfor %}
+{% endblock %}
