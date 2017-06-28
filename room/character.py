@@ -23,7 +23,7 @@ class Character_Demo:
 
 	def attack(self,enemy):
 		if self.target!=enemy.block_part:
-		enemy.hit(self.target)
+			enemy.hit(self.target)
 
 	def choice_target(self,target):
 		self.target = target 

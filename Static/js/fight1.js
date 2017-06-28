@@ -1,10 +1,11 @@
 $(document).ready(function(){
 
-    $(".click_me_player").click(function(){
+    $(".click_me_player").click(function() {
         $(".clicked_player").toggleClass("clicked_player");
         $(this).toggleClass("clicked_player");
     });
-    $(".click_me_enemy").click(function(){
+
+    $(".click_me_enemy").click(function() {
         $(".clicked_enemy").toggleClass("clicked_enemy");
         $(this).toggleClass("clicked_enemy");
     });
@@ -12,6 +13,8 @@ $(document).ready(function(){
 
 
     $("#fight").click(function(){
+       // $("#player_name").data("id");
+       // $("#emeny_name").data("id");
         $.ajax({
             type: "GET",
             url: "/attack/",
@@ -22,9 +25,9 @@ $(document).ready(function(){
                 'enemyId':$(".player_name").data('id'),
                 'playerId':$(".enemy_name").data('id'),
                 'roomId':$("#room").data("id")
+              },
 
 
-            },
             cache:false,
             success:
             function(data){
@@ -32,6 +35,8 @@ $(document).ready(function(){
                 var obj = jQuery.parseJSON( data );
                 $("#enemy").css("width",obj.healthEnemy+"%");
                 $("#player").css("width",obj.healthPlayer+"%");    
+                $('#player_health').html(obj.healthPlayer)
+                $('#enemy_health').html(obj.healthEnemy)
             }
        });
     })

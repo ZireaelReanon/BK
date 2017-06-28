@@ -1,0 +1,70 @@
+1. поставил кодировку
+2. поставил првильные tab во views.py json
+3. переименовал папки templates, css, js с маленькой была большая
+4. для отображения герое отредактировал url template с маленькой
+5. для отображения даты начала для комнаты нужно ввести date_begin вместо data_begin комнаты 
+6. заменить {% for FC in FCs %} на {% for character in characters %}
+7. для отображения имен player и enemy в models.py поставить табы для модели character для страницы main
+8. <a href="{% if room.data_end %} {{room.get_result}} {% else %}{{room.get_absolute_url}} {%endif%}" title="">
+
+все таки оставить как было чтобы в функцию go_to_room передавался players
+models.py
+def get_absolute_url(self):
+		return reverse("arena:in_room", kwargs={"id": self.id})
+		
+закоментировать пока
+def go_to_room(request, id=None):
+	instance = get_object_or_404(Room, id=id)
+	# status = True
+	# print(instance.data_end)
+	# if instance.data_end:
+	# 	return redirect(reverse("arena:result", kwargs={"id": instance.id}))
+	players = Character.objects.filter(room=instance)
+	print('players = %s ' %players)
+	context = {
+		"instance": instance,
+		"players": players,
+		"title":"fight-room"
+		# "status": status,
+	}
+	return render(request, "fight_room.html", context)
+
+ в html fight_room.html: для класов player_name, enemy_name - поставить стиль color:#ffffff;		
+		
+		
+9. Комната боя:
+def attack()
+p_id - исправить, было r_id
+room=Room.objects.get(id=p_id)# jобр строку найдет обект комната в базе рум и возворащается обект рум
+
+
+10. fig1.js  ->$
+перед ajax:
+$("#player_name").data("id");
+$("#emeny_name").data("id");
+
+для отображения цифры здоровья:
+$('#player_health').html(obj.healthPlayer)
+$('#enemy_health').html(obj.healthEnemy)
+
+в html:
+<span id="player_health" class="glyphicon glyphicon-heart" style="font-size:15px" aria-hidden="true"></span>%
+
+11. from .character import Character_Demo
+
+player = Character_Demo("MAMBA","Ork")
+enemy = Character_Demo("HEEEEH","Wolf")
+
+global player, enemy
+
+в character.py подвинуть
+enemy.hit(self.target)
+
+12. Закоментировать, для изменения жизней вместо каждый раз 100%:
+fight_style.css  =  /*height: 100%;*/
+
+13. Для кнопки
+<li id="fight"><a href="#" class="round red">Attack!<span class="round">Only one of you wins! </span></a></li>
+
+14. attack
+p_id=request.GET.get('roomId') - для получения id комнаты.

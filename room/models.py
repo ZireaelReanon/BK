@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.db import models
 from django.urls import reverse
 
@@ -13,7 +14,7 @@ class Room(models.Model):
 		return self.name
 
 	def get_absolute_url(self):
-		return reverse("arena:fight_room") #kwargs={"id": self.id}		
+		return reverse("arena:in_room", kwargs={"id": self.id})
 
 class Character(models.Model):
 	RACE=(("DE","Dark Elf"),("OR","Orc"),("MG","Magician"),("HU","Human"),("DW","Dwarf"),("W","Werewolf"),("DR","Driada"))
@@ -23,10 +24,10 @@ class Character(models.Model):
 	BODY_PARTS=["Head","Torso","Left hand","Right hand","Legs"]
 	health = 100
 	
-def __str__(self):
-	return self.name
+	def __str__(self):
+		return self.name
 
-def hit(self,target):
+	def hit(self,target):
 		health = self.health
 		if target == 0:
 			self.health -= 50
@@ -36,21 +37,22 @@ def hit(self,target):
 			self.health -= 10
 		elif target == 4:
 			self.health -= 20
-def attack(self,enemy):
-	print(enemy.block_part)
-	if self.target != enemy.block_part:
+
+	def attack(self,enemy):
+		print(enemy.block_part)
+		if self.target != enemy.block_part:
 			enemy.hit(self.target)
 
-def choice_target(self, target):
-	self.target = target
-def body_block(self,block_part):
-	self.block_part = block_part
+	def choice_target(self, target):
+		self.target = target
+	def body_block(self,block_part):
+		self.block_part = block_part
 # функция для перехода на страницу шаблон по имени шаблона в url. 
 	# arena это namespace в FightClub/urls.py для include()
 	# in_room это name в room/urls.py для url по game
 	# kwargs={"id": self.id} это передача значения как часть адреса.
-def get_absolute_url(self):
-		return reverse("arena:in_room", kwargs={"id": self.id})	
-def get_result(self):
-		return reverse ("arena:result", kwargs={"id": self.id})
+	# def get_absolute_url(self):
+	# 		return reverse("arena:in_room", kwargs={"id": self.id})
+	def get_result(self):
+			return reverse ("arena:finish_base", kwargs={"id": self.id})
 	

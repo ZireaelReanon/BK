@@ -22,12 +22,12 @@
 	
 	{%for room in rooms %}
 	{# Переход на выбраную комнату по нажатию. #}
-		<a href="{% if room.data_end %} {{room.get_result}} {% else %}{{room.get_absolute_url}} {%endif%}" title="">
+		<a href="{{room.get_absolute_url}}" title="">
 		 
 		<div class="col-sm-3 go_to_room" data-id="{{room.id}}">
 			<div class="col-sm-12">Name room: {{room}}</div>
-			<div class="col-sm-12" >When start: {{room.data_begin}}</div>
-			{% for FC in FCs %}
+			<div class="col-sm-12" >When start: {{room.date_begin}}</div>
+			{% for character in characters %}
 				{% if character.room == room %}
 					<div class="col-xs-12">
 
